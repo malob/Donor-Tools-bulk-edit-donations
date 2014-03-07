@@ -4,7 +4,7 @@ Donor-Tools-bulk-edit-source
 A ruby script to bulk edit the source on a list of donations in Donor Tools
 
 Usage
-=====
+-----
 
 To use this script you must first create a file called `config.rb` which contains information about your Donor Tools configuration.
 ```ruby
