@@ -34,9 +34,3 @@ donation_ids.each do |donation_id|
 	# Update donation
 	donation_resource.put(donation.to_s, content_type: 'application/xml')
 end
-
-
-
-# 'people/3070568/donations.xml'
-
-# ''
