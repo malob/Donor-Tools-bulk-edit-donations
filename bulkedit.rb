@@ -13,7 +13,7 @@ resource = RestClient::Resource.new(
 )
 
 # Get donations
-donations = REXML::Document.new resource['people/3070568/donations.xml'].get
+donations = REXML::Document.new resource[ARGV[0]].get
 
 # Extract ids
 donation_ids = Array.new
@@ -28,9 +28,15 @@ donation_ids.each do |donation_id|
 
 	# Change source-id
 	donation.elements.each('donation/source-id') do |source_id|
-		source_id.text = '42509'
+		source_id.text = ARGV[1]
 	end
 	
 	# Update donation
 	donation_resource.put(donation.to_s, content_type: 'application/xml')
 end
+
+
+
+# 'people/3070568/donations.xml'
+
+# ''
