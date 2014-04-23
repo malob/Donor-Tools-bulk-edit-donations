@@ -1,4 +1,4 @@
-# Donor-Tools-bulk-edit-source
+# Donor-Tools-bulk-edit-donations
 
 A ruby script to bulk edit attributes on a list of donations in [Donor Tools](http://donortools.com).
 
