@@ -1,4 +1,4 @@
-require 'rubygems' 
+require 'rubygems'
 require 'bundler/setup'
 Bundler.require :default
 
@@ -7,16 +7,16 @@ require_relative 'config.rb'
 
 # Setup REST resource
 resource = RestClient::Resource.new(
-  DTParams::Base_url, 
-  user: DTParams::User, 
-  password: DTParams::Pass
+  DTParams::BASE_URL,
+  user: DTParams::USER,
+  password: DTParams::PASS
 )
 
 # Get donations
 donations = REXML::Document.new resource[ARGV[0]].get
 
 # Extract ids
-donation_ids = Array.new
+donation_ids = []
 donations.root.elements.each 'donation/id' do |donation_id|
   donation_ids.push donation_id.text
 end
@@ -26,9 +26,9 @@ donation_ids.each do |donation_id|
   donation_resource = resource['donations/' + donation_id + '.xml']
   donation = REXML::Document.new donation_resource.get
 
-  # Change source-id
-  donation.root.elements.each 'source-id' do |source_id|
-    source_id.text = ARGV[1]
+  # Change attribute
+  donation.root.elements.each ARGV[1] do |attribute|
+    attribute.text = ARGV[2]
   end
 
   # Hack to avoid API bug
